@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Post Your AD</h1>
+    <div class="container mt-4">
+      
+        <div class="card">
+
+            <div class="form-group">
+            <form action="/users/sell" method="POST" enctype="multipart/form-data">
+                <div class="form-group" style="width:200px;">
+                    <select  class="selectpicker"  data-style="btn-info" name="carname" required>
+                      <option value="0">Select car:</option>
+                      <option value="Audi">Audi</option>
+                      <option value="BMW">BMW</option>
+                      <option value="Citroen">Citroen</option>
+                      <option value="Ford">Ford</option>
+                      <option value="Honda">Honda</option>
+                      <option value="Jaguar">Jaguar</option>
+                      <option value="Lnad Rovar">Land Rover</option>
+                      <option value="Mercedes">Mercedes</option>
+                      <option value="Mini">Mini</option>
+                      <option value="Nissan">Nissan</option>
+                      <option value="Toyota">Toyota</option>
+                      <option value="Volvo">Volvo</option>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="year">Year:</label>
+                    <input type="text" class="form-control" id="year" placeholder="Year" name="year" required>
+                </div>
+
+                <div class="form-group">
+                        <section class="plan cf" name="fuel">
+                            <h2>Fuel</h2>
+                            <input type="radio" name="radio1" id="cng" value="CNG" required>CNG
+                            <input type="radio" name="radio1" id="diesel" value="Diesel" checked>Diesel                            
+                            <input type="radio" name="radio1" id="electric" value="Electric">Electric
+                            <input type="radio" name="radio1" id="lpg" value="LPG">LPG
+                            <input type="radio" name="radio1" id="petrol" value="Petrol">Petrol
+                        </section>
+                </div>
+                <section class="plan cf" name="transmission">
+                    <h2>Transmission</h2>
+                    <input type="radio" name="radio2" value="Automatic" id="auto" value="auto" required>Automatic
+                    <input type="radio" name="radio2" id="manu" value="Manual" checked>Manual  
+                    </section>
+                </div>
+                <div class="form-group">
+                    <section class="plan cf" name="now">
+                        <h2>No of Owners</h2>
+                        <input type="radio" name="radio3"  id="1st" value="1" required>1st
+                        <input type="radio" name="radio3" id="2nd" value="2" checked>2nd                           
+                        <input type="radio" name="radio3" id="3rd" value="3">3rd
+                        <input type="radio" name="radio3" id="4th" value="4">4th
+                        <input type="radio" name="radio3" id="4+" value="5">4+
+                    </section>
+                </div>
+                 <div class="form-group">
+                    <label for="addtitle">Add Title:</label>
+                    <input type="text" class="form-group" id="addtitle" placeholder="Add Title" name="addtitle" required>
+                </div>
+
+                <div class="form-group">
+                   <label for="desc">Description</label>
+                   <input type="text" class="form-group" id="desc" placeholder="Description" name="desc" required>
+                </div>
+                <div class="form-group">
+                Set Price:<br/> <i class="fa fa-inr"></i><input type="text" class="form-group" placeholder="Set Price" name="sp" required>
+                </div>
+                <div class="form-group">
+                    <label for="desc">Mobile Number</label>
+                    <input type="text" class="form-group" id="mn" placeholder="Mobile no" name="mn" required>
+                 </div>
+                <div>
+                <div class="form-group">
+                    <label for="upload">Upload Photo</label>
+                    <input type="file" name="sampleFile"  accept="image/*" />
+                    </div>
+                <div>
+
+                    <button class="button">Post Now</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
