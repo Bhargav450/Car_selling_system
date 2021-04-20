@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style/style.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.css" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <style>
+  </style>
+  <title>Buy Used Car | Best Deal</title>
+</head>
+
+<body>
+  <main class="container-fluid px-0 pt-4 mx-0">
+    <!--NAVIGATION BAR: done using Bootstrap; fixed to top, dark for current page, -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0">
+      <a class="navbar-brand mr-5" href="index.ejs"><img src="image/logo.png"/></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span></button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item mr-lg-3 ">
+            <a class="nav-link" href="/index">Home <span class="sr-only .sr-only-focusable">(current)</span></a>
+          </li>
+          <li class="nav-item mr-lg-3">
+            <a class="nav-link" href="index.ejs#about-us">About Us</a>
+          </li>
+          <li class="nav-item mr-lg-3">
+            <a class="nav-link" href="index.ejs#sellcar">Selling</a>
+          </li>
+          <li class="nav-item mr-lg-3 active">
+            <a class="nav-link" href="buycar.ejs">Buying</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact-us.ejs">Contact Us</a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-1">
+          <input class="form-control mr-sm-2" type="search" placeholder="Enter Make/Model" aria-label="Search">
+          <button class="btn bg-warning my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <!--BUYCAR Page main banner-->
+    <div id="buycar">
+      <!--Display for MD & above-->
+      <div class="buycar-frame d-md-block d-none">
+        <h2 class="header-buycar1 white">Drive with a <span class="shout">Peace of Mind</span></h2>
+        <h3 class="header-buycar2 white">with <span class="gold shout">Warranty</span></h3>
+        <h3 class="header-buycar3 white">by <span><a href="http://mbmwheelpower.com.sg" target="_blank" style="color:white">MBM WheelPower!</a></span></h3>
+        <!--Search Bar: allows user to key in the make/model of cars they looking for, budget, etc-->
+        <div class="search-box b-l-gray white px-5 py-2">
+          <form style="font-size:10pt; color:rgb(127, 127, 127)">
+            <input id="search-bar" type="text" placeholder="Car Make / Model" />
+            <!--To allow user to select their lowest budget-->
+            <select name="price-min">
+                            <option value="">Min Price</option>                    
+                            <option value="">$10,000</option>                    
+                            <option value="">$20,000</option>                    
+                            <option value="">$30,000</option>                    
+                            <option value="">$40,000</option>                    
+                            <option value="">$50,000</option>                    
+                            <option value="">$60,000</option>                    
+                            <option value="">$70,000</option>                    
+                            <option value="">$80,000</option>                    
+                            <option value="">$90,000</option>                    
+                            <option value="">$100,000</option>                    
+                            <option value="">$200,000</option>                    
+                        </select>
+            <!--To allow user to select their max budget-->
+            <select name="price-max">
+                            <option value="">Max Price</option>                    
+                            <option value="">$10,000</option>                    
+                            <option value="">$20,000</option>                    
+                            <option value="">$30,000</option>                    
+                            <option value="">$40,000</option>                    
+                            <option value="">$50,000</option>                    
+                            <option value="">$60,000</option>                    
+                            <option value="">$70,000</option>                    
+                            <option value="">$80,000</option>                    
+                            <option value="">$90,000</option>                    
+                            <option value="">$100,000</option>                    
+                            <option value="">$110,000</option>                    
+                            <option value="">$120,000</option>                    
+                            <option value="">$130,000</option>                    
+                            <option value="">$140,000</option>                    
+                            <option value="">$150,000</option>                    
+                            <option value="">$200,000</option>                    
+                            <option value="">$300,000</option>                    
+                       </select>
+            <!--To allow user to select his choice of age of cars to view -->
+            <select name="year-of-make">
+                            <option value="">Year Reg</option>                    
+                            <option value="">2018</option>                    
+                            <option value="">2016</option>                    
+                            <option value="">2015</option>                    
+                            <option value="">2014</option>                    
+                            <option value="">2013</option>                    
+                            <option value="">2011</option>                    
+                            <option value="">2010</option>                    
+                            <option value="">2009</option>                    
+                            <option value="">&lt1 year(s) old</option>                    
+                            <option value="">&lt2 year(s) old</option>                    
+                            <option value="">&lt3 year(s) old</option>                    
+                            <option value="">&lt4 year(s) old</option>                    
+                            <option value="">&lt5 year(s) old</option>                    
+                            <option value="">&gt6 year(s) old</option>                    
+                            <option value="">&gt7 year(s) old</option>                    
+                            <option value="">&gt8 year(s) old</option>                    
+                            <option value="">&gt9 year(s) old</option>                    
+                            <option value="">&gt10 year(s) old</option>                    
+                            <option value="">All</option>                    
+                        </select>
+            <!--To allow user to select his choice of type of cars to view -->
+            <select name="car-type">
+                            <option value="">Vehicle Type</option>                    
+                            <option value="">Hybrid Car</option>                    
+                            <option value="">Hatchback</option>                    
+                            <option value="">Luxury Sedan</option>                    
+                            <option value="">MPV</option>                    
+                            <option value="">Mid-sized Sedan</option>                    
+                            <option value="">Sports Car</option>                    
+                            <option value="">Stationwagon</option>                    
+                            <option value="">SUV</option>                    
+                            <option value="">All</option>    
+                        </select>
+            <a href="buycar-search.ejs"><input type="button" class="btn-warning" value="Find Used" /></a>
+          </form>
+        </div>
+      </div>
+      <!--Display for small devices / mobile-->
+      <div class="buycar-frame d-md-none"></div>
+      <div class="b-gray d-md-none">
+        <h2 class="header-buycar1 white">Drive with a <span class="shout">Peace of Mind</span></h2>
+        <h3 class="header-buycar2 white">with <span class="gold shout">Warranty</span></h3>
+        <h3 class="header-buycar3 white">by <span><a href="http://mbmwheelpower.com.sg" target="_blank" style="color:white">MBM WheelPower!</a></span></h3>
+      </div>
+      <!--Search Bar: allows user to key in the make/model of cars they looking for, budget, etc-->
+      <div class="b-l-gray p-2 d-md-none">
+        <form class="form-group " style="font-size:10pt; color:rgb(127, 127, 127)">
+          <input class="form-control my-2 py-1" id="search-bar" type="text" placeholder="Car Make / Model" />
+          <!--To allow user to select their lowest budget-->
+          <select name="price-min form-control">
+                    <option value="">Min Price</option>                    
+                    <option value="">$10,000</option>                    
+                    <option value="">$20,000</option>                    
+                    <option value="">$30,000</option>                    
+                    <option value="">$40,000</option>                    
+                    <option value="">$50,000</option>                    
+                    <option value="">$60,000</option>                    
+                    <option value="">$70,000</option>                    
+                    <option value="">$80,000</option>                    
+                    <option value="">$90,000</option>                    
+                    <option value="">$100,000</option>                    
+                    <option value="">$200,000</option>                    
+                </select>
+          <!--To allow user to select their max budget-->
+          <select name="price-max form-control">
+                    <option value="">Max Price</option>                    
+                    <option value="">$10,000</option>                    
+                    <option value="">$20,000</option>                    
+                    <option value="">$30,000</option>                    
+                    <option value="">$40,000</option>                    
+                    <option value="">$50,000</option>                    
+                    <option value="">$60,000</option>                    
+                    <option value="">$70,000</option>                    
+                    <option value="">$80,000</option>                    
+                    <option value="">$90,000</option>                    
+                    <option value="">$100,000</option>                    
+                    <option value="">$110,000</option>                    
+                    <option value="">$120,000</option>                    
+                    <option value="">$130,000</option>                    
+                    <option value="">$140,000</option>                    
+                    <option value="">$150,000</option>                    
+                    <option value="">$200,000</option>                    
+                    <option value="">$300,000</option>                    
+               </select>
+          <!--To allow user to select his choice of age of cars to view -->
+          <select name="year-of-make form-control">
+                    <option value="">Year Reg</option>                    
+                    <option value="">2018</option>                    
+                    <option value="">2016</option>                    
+                    <option value="">2015</option>                    
+                    <option value="">2014</option>                    
+                    <option value="">2013</option>                    
+                    <option value="">2011</option>                    
+                    <option value="">2010</option>                    
+                    <option value="">2009</option>                    
+                    <option value="">&lt1 year(s) old</option>                    
+                    <option value="">&lt2 year(s) old</option>                    
+                    <option value="">&lt3 year(s) old</option>                    
+                    <option value="">&lt4 year(s) old</option>                    
+                    <option value="">&lt5 year(s) old</option>                    
+                    <option value="">&gt6 year(s) old</option>                    
+                    <option value="">&gt7 year(s) old</option>                    
+                    <option value="">&gt8 year(s) old</option>                    
+                    <option value="">&gt9 year(s) old</option>                    
+                    <option value="">&gt10 year(s) old</option>                    
+                    <option value="">All</option>                    
+                </select>
+          <!--To allow user to select his choice of type of cars to view -->
+          <select name="car-type form-control">
+                              <option value="">Vehicle Type</option>                    
+                              <option value="">Hybrid Car</option>                    
+                              <option value="">Hatchback</option>                    
+                              <option value="">Luxury Sedan</option>                    
+                              <option value="">MPV</option>                    
+                              <option value="">Mid-sized Sedan</option>                    
+                              <option value="">Sports Car</option>                    
+                              <option value="">Stationwagon</option>                    
+                              <option value="">SUV</option>                    
+                              <option value="">All</option>    
+                          </select>
+          <a href="#car-listing"><input type="button" class="btn-warning mt-2" value="Find Used" /></a>
+        </form>
+      </div>
+    </div>
+    <!--Testimonial from customers: involve position shifting of the testimonials closer to respective customers-->
+    <section class="testimonial row justify-content-center text-center mt-md-4 mt-0 mx-md-5 my-5 ">
+      <div class="col pr-0"><img src="image/testimonial.jpg" class="circle" /></div>
+      <div class="col pl-0 pr-md-0 pr-5 font-italic border-right ">
+        <p>A wonderful buying experience with Ace. Process is smooth and hassle-free! ~ Michael Ang</p>
+      </div>
+
+      <div class="d-md-none col-12 p-0 border-bottom "></div>
+      <div class="col mt-md-5 mt-0 pt-md-5 pt-2 pr-0 font-italic border-left">
+        <p>Ace got me the lowest insurance quote and the car is well-groomed before handover! ~ Farhan</p>
+      </div>
+      <div class="col pl-0 pt-2"><img src="image/testimonial2.jpg" class="circle align-bottom" /></div>
+    </section>
+
+    <div id="car-listing">
+      <!--Car Listing for MD screen & above-->
+      <div class="table-responsive d-md-block d-none">
+        <table class="table text-center">
+          <!--Menu bar-->
+          <thead class="listing">
+            <tr class="table-secondary">
+              <th></th>
+              <th>Car Name</th>
+              <th>Model</th>
+              <th>Price</th>
+              <th>Depreciation</th>
+              <th>Reg Date</th>
+              <th>Mileage</th>
+              <th>Vehicle Type</th>
+              <th><input type="text" placeholder="Enter your search" /></button>
+              </th>
+            </tr>
+          </thead>
+          <!--Car Listing -->
+          <!--Mini Advert-->
+          <tbody class="listing ">
+            <tr>
+              <tr>
+                <td rowspan="3">
+                  <image src="image/car-listing/mini.jpg" class="car-image" />
+                </td>
+                <% for(var i of data) { %>
+                <td class="red"><b><%= i.name %></b></td>
+                <td>$15,450</td>
+                <td>27-Apr-2018</td>
+                <td>13,000km</td>
+                <td>Sports</td>
+               
+                <td rowspan="2" class="border-white text-left">
+                  <span class="car-badge badge badge-primary"> 2018</span>
+                  <span class="car-badge badge badge-primary"> Mini</span>
+                  <span class="car-badge badge badge-primary"> Cooper S</span>
+                  <span class="car-badge badge badge-primary"> 1988cc</span>
+                  <span class="car-badge badge badge-primary"> Sports</span>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="7" class="border-white  text-left">
+                  Facelifted Model! Better Power Of 280Nm In Torque And More Fuel Efficient With 7-speed (A) DCT. Excellent Fuel Consumption Of 17.5 Km/l.
+                </td>
+              </tr>
+              <tr>
+                <td colspan="8" class="border-white text-left font-italic">Posted : 17-Jul-2019</td>
+              </tr>
+            </tr>
+            <% } %>
+          </tbody>
+          
+        </table>
+      </div>
+    </div>
+  </main>
+  <!--Footer Section-->
+  <div class="card-group">
+    <div class="card">
+      <div class="card-body pl-5">
+        <h5 class="card-title gold"><strong>Stay Connected</strong></h5>
+        <h6 class=" font-italic"><b>Subscribe to Sellmycar community!</b></h6>
+        <p class="card-text font-italic">Join us to get update on good deals and news concerning car ownership</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body pl-5">
+        <input type="text" placeholder="Email Address" class="w-50" /><button class="bg-warning">Go</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body pl-5">
+        <h5 class="card-title gold"><strong>Follow Us</strong></h5>
+
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-instagram"></a>
+
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="script.js"></script>
+</body>
+
+</html>

@@ -9,7 +9,10 @@ const passport = require("passport");
 require("dotenv").config();
 const initializePassport = require("./passportConfig");
 const path = require('path');
+const bodyParser = require('body-parser');
+const Pusher = require('pusher');
 const fileUpload = require('express-fileupload');
+const { title } = require("process");
 
 initializePassport(passport);
 
@@ -19,8 +22,13 @@ initializePassport(passport);
 const PORT=process.env.PORT || 4000;
 
 
-const publicDirectory = path.join(__dirname, './public' )// to tell css file is at what location
-app.use(express.static(publicDirectory));
+app.use(express.static('public'))
+app.use('/css', express.static(__dirname + 'public/css'))
+app.use('/js', express.static(__dirname + 'public/js'))
+app.use('/image', express.static(__dirname + 'public/image'))
+
+app.use(express.json());
+
 app.use(express.static('upload/'));
 
 
@@ -42,9 +50,18 @@ app.use(passport.session());
 
 app.use(flash());
 
-app.get("/",(req,res)  => {
+app.get("/index",(req,res)  => {
     res.render("index");
 });
+
+app.post("/index",(req,res)  => {
+    res.render("index");
+});
+
+
+
+
+
 
 app.get("/users/register", checkAuthenticated , (req,res)=>{
    res.render("register"); 
@@ -201,6 +218,40 @@ app.post("/users/sell", checkNotAuthenticated,(req, res) =>{
   
         });
     });
+    });
+    /*app.get("/bcar",(req,res)=>{
+        res.render("bcar");
+    })*/
+
+  
+    
+    /*app.get("/bcar",(req,res)=>{
+       pool.query(`SELECT
+       name
+   FROM
+       cust
+   INNER JOIN car_details ON cust.id = car_details.id`,function(err,data,fields){
+       if(err){
+           throw err;
+       }else{
+        res.render('bcar', {data:data});
+       }
+       console.log(data);
+   });
+  // res.redirect("/bcar");
+
+    });*/
+
+
+    app.get('/buycar', function(req, res, next) {
+        pool.query(`SELECT
+        name,email,password,car_name,img
+        FROM
+        cust
+        INNER JOIN car_details ON cust.id = car_details.id`, function (err,data,rows) {
+        if (err) throw err;
+        res.render('buycar', {title:'User List', data: data.rows});
+      });
     });
 
 
