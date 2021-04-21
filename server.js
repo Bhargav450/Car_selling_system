@@ -29,7 +29,7 @@ app.use('/image', express.static(__dirname + 'public/image'))
 
 app.use(express.json());
 
-app.use(express.static('upload/'));
+app.use('/upload',express.static('upload/'));
 
 
 app.set("view engine","ejs");
@@ -209,7 +209,7 @@ app.post("/users/sell", checkNotAuthenticated,(req, res) =>{
     pool.query(
         `insert into car_details (id,car_name,year,fuel,transmission,no_of_owners,addtitle,description,price,mob_no,img)
         values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
-        [user.id,carname,year,fuel,transmission,now,addtitle,desc,sp,mn,sampleFile],
+        [user.id,carname,year,fuel,transmission,now,addtitle,desc,sp,mn,sampleFile.name],
         function(error, results, fields) {
             if (error) throw error;
             console.log(results);
@@ -245,7 +245,7 @@ app.post("/users/sell", checkNotAuthenticated,(req, res) =>{
 
     app.get('/buycar', function(req, res, next) {
         pool.query(`SELECT
-        name,email,password,car_name,img
+        name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date
         FROM
         cust
         INNER JOIN car_details ON cust.id = car_details.id`, function (err,data,rows) {
