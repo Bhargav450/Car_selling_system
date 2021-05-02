@@ -1,0 +1,38 @@
+<%- include('home.ejs') %>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/sell">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">View Car</li>
+    </ol>
+</nav>
+
+<div class="view-car" p-5>
+  <div class="row mb-5">
+    <div class="col text-center">
+      <h3><%=data.rows[0].car_name%></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Car Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Year</th>
+              <th scope="col">Phone</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"><%=data.rows[0].car_name%></th>
+              <td><%=data.rows[0].price%></td>
+              <td><%=data.rows[0].year%></td>
+              <td><%=data.rows[0].mob_no%></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

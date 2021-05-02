@@ -50,12 +50,176 @@ app.use(passport.session());
 
 app.use(flash());
 
-app.get("/index",(req,res)  => {
+app.get("/index",checkNotAuthenticated,(req,res)  => {
     res.render("index");
 });
 
-app.post("/index",(req,res)  => {
+app.post("/index",checkNotAuthenticated,(req,res)  => {
     res.render("index");
+});
+
+//selling  car page
+
+app.get('/sell',checkNotAuthenticated,(req,res)=>{
+    const user = req.user.id;
+    pool.query('SELECT * FROM car_details where id=$1',[user],(err,data,rows)=>{
+        //when done wiyt connection,release it
+        
+        if(!err){
+            res.render('main',{title:'User List', data: data.rows});
+        }else{
+            console.log(err);
+        }
+    //console.log('The data from car_details',data)  
+    });
+});
+
+app.post('/sell',checkNotAuthenticated,(req,res)=>{
+     //car_details connection
+
+     let searchTerm = req.body.search;
+
+
+     pool.query('SELECT * FROM car_details where car_name iLIKE $1 ' , ['%' + searchTerm + '%'] ,(err,data,rows)=>{
+       //when done wiyt connection,release it
+   
+       if(!err){
+           res.render('main',{title:'User List', data: data.rows});
+       }else{
+           console.log(err);
+       }
+   //console.log('The data from car_details',data);
+   });
+});
+
+//adding car
+app.get('/addcar',checkNotAuthenticated,(req,res)=>{
+    res.render('add-car');
+});
+
+app.post('/addcar',checkNotAuthenticated,(req,res)=>{
+    const user = req.user;
+    const  fuel =req.body.r1;
+    const transmission=req.body.r2;
+    const now=req.body.r3;
+    let sampleFile;
+    let uploadPath;
+    if(!req.files || Object.keys(req.files).length===0){
+    return res.status(400).send('No files were uploaded.');
+    }
+
+  //name of the imput is sampleFile
+  sampleFile = req.files.sampleFile;
+  uploadPath = __dirname = 'upload/' + sampleFile.name;
+  console.log(sampleFile);
+
+    let {carname,year,addtitle,desc,cp,mn}=req.body;
+  //console.log(req.body.carname);
+
+  sampleFile.mv(uploadPath,function(err){
+    pool.query(
+        `insert into car_details (id,car_name,year,fuel,transmission,no_of_owners,addtitle,description,price,mob_no,img)
+        values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
+        [user.id,carname,year,fuel,transmission,now,addtitle,desc,cp,mn,sampleFile.name],
+        function(error, results, fields) {
+            if (error) throw error;
+           // console.log(results);
+            //console.log(comments);
+            res.render('add-car');
+  
+        });
+    });
+});
+
+//edit car
+
+app.get('/editcar/:id',checkNotAuthenticated,(req,res)=>{
+    pool.query('SELECT * FROM car_details  where  car_register_id = $1' , [req.params.id] ,(err,rows)=>{
+        //when done wiyt connection,release it
+    
+        if(!err){
+            res.render('edit-car',{data: rows});
+        }else{
+            console.log(err);
+        }
+        //console.log('The data from car_details table:\n',rows);
+      });
+});
+
+app.post('/editcar/:id',checkNotAuthenticated,(req,res)=>{
+
+    const  fuel =req.body.r1;
+    const transmission=req.body.r2;
+    const now=req.body.r3;
+    let sampleFile;
+    let uploadPath;
+    if(!req.files || Object.keys(req.files).length===0){
+    return res.status(400).send('No files were uploaded.');
+    }
+
+  //name of the imput is sampleFile
+  sampleFile = req.files.sampleFile;
+  uploadPath = __dirname = 'upload/' + sampleFile.name;
+  console.log(sampleFile);
+
+    let {carname,year,addtitle,desc,cp,mn}=req.body;
+  console.log(req.body.carname);
+
+    pool.query('UPDATE car_details  SET car_name=$1,year=$2,fuel=$3,transmission=$4,no_of_owners=$5,addtitle=$6,description=$7,price=$8,mob_no=$9,img=$10 where  car_register_id = $11' , [carname,year,fuel,transmission,now,addtitle,desc,cp,mn,sampleFile.name,req.params.id] ,(err,rows)=>{
+      //when done wiyt connection,release it
+  
+      if(!err){
+        pool.query('SELECT * FROM car_details  where  car_register_id = $1' , [req.params.id] ,(err,rows)=>{
+            //when done with connection,release it
+        
+            if(!err){
+                res.render('edit-car',{data: rows, alert: `record has been updated.`});
+            }else{
+                console.log(err);
+            }
+           // console.log('The data from car_details table:\n',rows);
+          });
+      
+      }
+      //console.log('The data from car_details table:\n',rows);
+    });
+
+});
+
+//delete car
+
+app.get('/:id',checkNotAuthenticated,(req,res)=>{
+
+    pool.query('DELETE FROM car_details  where  car_register_id = $1' , [req.params.id] ,(err,rows)=>{
+        //when done wiyt connection,release it
+    
+        if(!err){
+            res.redirect('/sell');
+        }else{
+            console.log(err);
+        }
+        //console.log('The data from car_details table:\n',rows);
+      });
+
+});
+
+//view car
+app.get('/viewcar/:id',checkNotAuthenticated,(req,res)=>{
+
+    
+  //car_details connection
+
+  pool.query('SELECT * FROM car_details  where  car_register_id = $1' , [req.params.id] ,(err,rows)=>{
+    //when done wiyt connection,release it
+
+    if(!err){
+        res.render('view-car',{data: rows});
+    }else{
+        console.log(err);
+    }
+    //console.log('The data from car_details table:\n',rows);
+  });
+
 });
 
 
@@ -164,7 +328,7 @@ else{
 
 
  app.post("/users/login",passport.authenticate("local", {
-     successRedirect:'/users/dashboard',
+     successRedirect:'/index',
      failureRedirect:'/users/login',
      failureFlash: true
  })
@@ -173,7 +337,7 @@ else{
 
  function checkAuthenticated(req,res,next){
      if(req.isAuthenticated()){
-     return res.redirect("/users/dashboard");
+     return res.redirect("/index");
      }
      next();
  }
@@ -239,11 +403,12 @@ app.post("/users/sell", checkNotAuthenticated,(req, res) =>{
        console.log(data);
    });
   // res.redirect("/bcar");
-
     });*/
 
 
-    app.get('/buycar', function(req, res, next) {
+//buying car
+
+    app.get('/buycar', checkNotAuthenticated,(req, res)=> {
         pool.query(`SELECT
         name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date
         FROM
@@ -259,3 +424,8 @@ app.post("/users/sell", checkNotAuthenticated,(req, res) =>{
 app.listen(PORT,()=>{
     console.log(`server running on port ${PORT}`);
 });
+
+
+
+  
+

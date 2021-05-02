@@ -1,0 +1,154 @@
+  
+<%- include('home.ejs') %>
+
+<%=data.rows[0].img%>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/sell">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Edit Car</li>
+    </ol>
+</nav>
+
+
+<form class="row g-3 needs-validation" method="POST" action="/editcar/<%=data.rows[0].car_register_id%>" enctype="multipart/form-data" novalidate>
+
+    <div class="col-6">
+        <div class="form-floating mb-2">
+            <select class="form-select" aria-label="Default select example" name="carname">
+                    <option value="<%= data.rows[0].car_name %>"> <%= data.rows[0].car_name %> </option>
+                    <option value="Audi">Audi</option>
+                    <option value="BMW">BMW</option>
+                    <option value="Citroen">Citroen</option>
+                    <option value="Ford">Ford</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Jaguar">Jaguar</option>
+                    <option value="Lnad Rovar">Land Rover</option>
+                    <option value="Mercedes">Mercedes</option>
+                    <option value="Mini">Mini</option>
+                    <option value="Nissan">Nissan</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Volvo">Volvo</option>
+            </select>
+            
+            </select>
+              <label for="floatingInput">Car Name</label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" name="year" id="year" placeholder="Year" value="<%=data.rows[0].year%>" required>
+            <label for="year">Year</label>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            
+            <label for="floatingInput">Fuel Type</label>
+
+            
+
+            <input type="radio" class="btn-check" name="r0" id="btnradio0" autocomplete="off" value="<%= data.rows[0].car_register_id %>" checked required>
+            <label class="btn btn-outline-primary" for="btnradio0"><%= data.rows[0].fuel%></label>
+          
+
+            <input type="radio" class="btn-check" name="r1" id="btnradio1" autocomplete="off" value="CNG"  required>
+            <label class="btn btn-outline-primary" for="btnradio1">CNG</label>
+          
+            <input type="radio" class="btn-check" name="r1" id="btnradio2" autocomplete="off" value="Petrol" required>
+            <label class="btn btn-outline-primary" for="btnradio2">Petrol</label>
+          
+            <input type="radio" class="btn-check" name="r1" id="btnradio3" autocomplete="off" value="Diesel"  required>
+            <label class="btn btn-outline-primary" for="btnradio3">Diesel</label>
+
+            <input type="radio" class="btn-check" name="r1" id="btnradio4" autocomplete="off" value="Electric" required>
+            <label class="btn btn-outline-primary" for="btnradio4">Electric</label>
+
+            <input type="radio" class="btn-check" name="r1" id="btnradio5" autocomplete="off" value="LPG" required>
+            <label class="btn btn-outline-primary" for="btnradio5">LPG</label>
+
+        </div>  
+    </div>
+
+    <div class="col-6">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            
+            <label for="floatingInput">Transmission</label>
+
+            
+            <input type="radio" class="btn-check" name="r7" id="btnradio7" autocomplete="off" value="<%= data.rows[0].car_register_id %>" checked required>
+            <label class="btn btn-outline-primary" for="btnradio7"><%= data.rows[0].transmission%></label>
+
+            <input type="radio" class="btn-check" name="r2" id="b1" autocomplete="off" value="Automatic"  required>
+            <label class="btn btn-outline-primary" for="b1">Automatic</label>
+          
+            <input type="radio" class="btn-check" name="r2" id="b2" autocomplete="off" value="Manual" required>
+            <label class="btn btn-outline-primary" for="b2">Manual</label>
+        </div>  
+    </div>
+
+    <div class="col-6">
+        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            
+            <label for="floatingInput">No of Owners</label>
+
+            
+            <input type="radio" class="btn-check" name="r8" id="btnradio8" autocomplete="off" value="<%= data.rows[0].car_register_id %>" checked required>
+            <label class="btn btn-outline-primary" for="btnradio8"><%= data.rows[0].no_of_owners%></label>
+
+            <input type="radio" class="btn-check" name="r3" id="b3" autocomplete="off" value="1"  required>
+            <label class="btn btn-outline-primary" for="b3">1</label>
+          
+            <input type="radio" class="btn-check" name="r3" id="b4" autocomplete="off" value="2" required>
+            <label class="btn btn-outline-primary" for="b4">2</label>
+
+            <input type="radio" class="btn-check" name="r3" id="b5" autocomplete="off" value="3" required>
+            <label class="btn btn-outline-primary" for="b5">3</label>
+
+            
+            <input type="radio" class="btn-check" name="r3" id="b6" autocomplete="off" value="4" required>
+            <label class="btn btn-outline-primary" for="b6">4</label>
+
+            <input type="radio" class="btn-check" name="r3" id="b7" autocomplete="off" value="5" required>
+            <label class="btn btn-outline-primary" for="b7">5</label>
+        </div>  
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" name="addtitle" value="<%=data.rows[0].addtitle%>"  id="addtitle" placeholder="Add Title" required>
+            <label for="addtitle">Add Title</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" name="desc" value="<%=data.rows[0].description%>" id="desc" placeholder="Description Like:Car Model, and more details" required>
+            <label for="desc">Description Like:Car Model, and more details</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" name="mn" value="<%=data.rows[0].mob_no%>" id="mn" placeholder="Description Like:Car Model, and more details" required>
+            <label for="mn">Mobile Number</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" name="cp" value="<%=data.rows[0].price%>" id="cp" placeholder="Description Like:Car Model, and more details" required>
+            <label for="cp">Car Price</label>
+        </div>
+    </div>
+
+    <div class="col-6">
+        <label for="formFileSm" class="form-label">Upload an Image</label>
+        <input class="form-control form-control-sm" name="sampleFile" value="<%=data.rows[0].img%>"  id="formFileSm" type="file" accept="image/*"  / required>
+    </div>
+
+    <div class="col-12 d-grid">
+        <button class="btn btn-primary" type="submit">Post now</button>
+    </div>
+   
+</form>

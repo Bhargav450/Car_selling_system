@@ -1,0 +1,26 @@
+<%- include('home.ejs') %>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/sell">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">New Car</li>
+    </ol>
+</nav>
+
+
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+
+
+
+
+<form class="row g-3 needs-validation" method="POST" action="/addcar" enctype="multipart/form-data" novalidate>
+
+    <%- include('./partials/user-form.ejs') %>
+
+    
+</form>

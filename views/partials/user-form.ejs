@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Selling System</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+</head>
+
+<body>
+  <div class="col-6">
+    <div class="form-floating mb-2">
+        <select class="form-select" aria-label="Default select example" name="carname">
+                  <option value="Audi">Audi</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Citroen">Citroen</option>
+                  <option value="Ford">Ford</option>
+                  <option value="Honda">Honda</option>
+                  <option value="Jaguar">Jaguar</option>
+                  <option value="Lnad Rovar">Land Rover</option>
+                  <option value="Mercedes">Mercedes</option>
+                  <option value="Mini">Mini</option>
+                  <option value="Nissan">Nissan</option>
+                  <option value="Toyota">Toyota</option>
+                  <option value="Volvo">Volvo</option>
+          </select>
+          <label for="floatingInput">Car Name</label>
+    </div>
+</div>
+<div class="col-6">
+    <div class="form-floating mb-2">
+        <input type="text" class="form-control" name="year" id="year" placeholder="Year" required>
+        <label for="floatingInput">Year</label>
+    </div>
+</div>
+<div class="col-6">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        
+        <label for="floatingInput">Fuel Type</label>
+        <input type="radio" class="btn-check" name="r1" id="btnradio1" autocomplete="off" value="CNG" checked required>
+        <label class="btn btn-outline-primary" for="btnradio1">CNG</label>
+      
+        <input type="radio" class="btn-check" name="r1" id="btnradio2" autocomplete="off" value="Petrol" required>
+        <label class="btn btn-outline-primary" for="btnradio2">Petrol</label>
+      
+        <input type="radio" class="btn-check" name="r1" id="btnradio3" autocomplete="off" value="Diesel"  required>
+        <label class="btn btn-outline-primary" for="btnradio3">Diesel</label>
+
+        <input type="radio" class="btn-check" name="r1" id="btnradio4" autocomplete="off" value="Electric" required>
+        <label class="btn btn-outline-primary" for="btnradio4">Electric</label>
+
+        <input type="radio" class="btn-check" name="r1" id="btnradio5" autocomplete="off" value="LPG" required>
+        <label class="btn btn-outline-primary" for="btnradio5">LPG</label>
+
+    </div>  
+</div>
+
+<div class="col-6">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        
+        <label for="floatingInput">Transmission</label>
+        <input type="radio" class="btn-check" name="r2" id="b1" autocomplete="off" value="Automatic" checked required>
+        <label class="btn btn-outline-primary" for="b1">Automatic</label>
+      
+        <input type="radio" class="btn-check" name="r2" id="b2" autocomplete="off" value="Manual" required>
+        <label class="btn btn-outline-primary" for="b2">Manual</label>
+    </div>  
+</div>
+
+<div class="col-6">
+    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+        
+        <label for="floatingInput">No of Owners</label>
+        <input type="radio" class="btn-check" name="r3" id="b3" autocomplete="off" value="1" checked required>
+        <label class="btn btn-outline-primary" for="b3">1</label>
+      
+        <input type="radio" class="btn-check" name="r3" id="b4" autocomplete="off" value="2" required>
+        <label class="btn btn-outline-primary" for="b4">2</label>
+
+        <input type="radio" class="btn-check" name="r3" id="b5" autocomplete="off" value="3" required>
+        <label class="btn btn-outline-primary" for="b5">3</label>
+
+        
+        <input type="radio" class="btn-check" name="r3" id="b6" autocomplete="off" value="4" required>
+        <label class="btn btn-outline-primary" for="b6">4</label>
+
+        <input type="radio" class="btn-check" name="r3" id="b7" autocomplete="off" value="5" required>
+        <label class="btn btn-outline-primary" for="b7">5</label>
+    </div>  
+</div>
+
+<div class="col-6">
+    <div class="form-floating mb-2">
+        <input type="text" class="form-control" name="addtitle" id="addtitle" placeholder="Add Title" required>
+        <label for="addtitle">Add Title</label>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="form-floating mb-2">
+        <input type="text" class="form-control" name="desc" id="desc" placeholder="Description Like:Car Model, and more details" required>
+        <label for="desc">Description Like:Car Model, and more details</label>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="form-floating mb-2">
+        <input type="text" class="form-control" name="mn" id="mn" placeholder="Description Like:Car Model, and more details" required>
+        <label for="mn">Mobile Number</label>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="form-floating mb-2">
+        <input type="text" class="form-control" name="cp" id="cp" placeholder="Description Like:Car Model, and more details" required>
+        <label for="cp">Car Price</label>
+    </div>
+</div>
+
+<div class="col-6">
+    <label for="formFileSm" class="form-label">Upload an Image</label>
+    <input class="form-control form-control-sm" name="sampleFile"  id="formFileSm" type="file" accept="image/*" / required>
+</div>
+
+<div class="col-12 d-grid">
+    <button class="btn btn-primary" type="submit">Post now</button>
+</div>
+</body>
+
+</html>
