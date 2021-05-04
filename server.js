@@ -51,7 +51,7 @@ app.use(passport.session());
 app.use(flash());
 
 app.get("/index",checkNotAuthenticated,(req,res)  => {
-    res.render("index");
+    res.render("index",{user: req.user.name});
 });
 
 app.post("/index",checkNotAuthenticated,(req,res)  => {
@@ -106,6 +106,11 @@ app.get('/buycar', checkNotAuthenticated,(req, res) =>{
             console.log(err);
         }
   });
+});
+
+//profile
+app.get('/profile',checkNotAuthenticated,(req,res)=>{
+res.render('profile');
 });
 
 //adding car
