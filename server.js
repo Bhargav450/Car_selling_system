@@ -92,6 +92,22 @@ app.post('/sell',checkNotAuthenticated,(req,res)=>{
    });
 });
 
+//buy car
+
+app.get('/buycar', checkNotAuthenticated,(req, res) =>{
+    pool.query(`SELECT
+    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date
+    FROM
+    cust
+    INNER JOIN car_details ON cust.id = car_details.id`,(err,data,rows) =>{
+        if(!err){
+            res.render('buycar',{title:'User List', data: data.rows});
+        }else{
+            console.log(err);
+        }
+  });
+});
+
 //adding car
 app.get('/addcar',checkNotAuthenticated,(req,res)=>{
     res.render('add-car');
@@ -408,16 +424,7 @@ app.post("/users/sell", checkNotAuthenticated,(req, res) =>{
 
 //buying car
 
-    app.get('/buycar', checkNotAuthenticated,(req, res)=> {
-        pool.query(`SELECT
-        name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date
-        FROM
-        cust
-        INNER JOIN car_details ON cust.id = car_details.id`, function (err,data,rows) {
-        if (err) throw err;
-        res.render('buycar', {title:'User List', data: data.rows});
-      });
-    });
+
 
 
 
