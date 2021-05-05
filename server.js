@@ -51,12 +51,22 @@ app.use(passport.session());
 app.use(flash());
 
 app.get("/index",checkNotAuthenticated,(req,res)  => {
-    res.render("index",{user: req.user.name});
+
+    const user = req.user.id;
+    pool.query('SELECT *FROM cust where id=$1',[user],(err,data,rows)=>{
+        //when done wiyt connection,release it
+        
+        if(!err){
+            res.render('index',{title:'User List', data: data.rows});
+        }else{
+            console.log(err);
+        }
+    //console.log('The data from car_details',data)  
+    });
+   
 });
 
-app.post("/index",checkNotAuthenticated,(req,res)  => {
-    res.render("index");
-});
+
 
 //selling  car page
 
@@ -110,7 +120,56 @@ app.get('/buycar', checkNotAuthenticated,(req, res) =>{
 
 //profile
 app.get('/profile',checkNotAuthenticated,(req,res)=>{
-res.render('profile');
+    const user = req.user.id;
+    pool.query(`SELECT * FROM cust where id=$1`,[user],(err,data,rows)=>{
+        //when done wiyt connection,release it
+        
+        if (!err){
+            res.render('profile',{data: data.rows});
+        }else{
+            console.log(err.message)
+        }
+    });
+//res.render();
+});
+
+
+app.post('/profile',checkNotAuthenticated,(req,res)=>{
+    let sampleFile;
+    let uploadPath;
+
+    if(!req.files || Object.keys(req.files).length === 0){
+        return res.status(400).send('No files were Uploaded.');
+    }
+
+    sampleFile=req.files.sampleFile;
+    uploadPath = __dirname = 'upload/' + sampleFile.name;
+
+    sampleFile.mv(uploadPath,function(err){
+        if(err) return res.status(500).send(err);
+
+
+        const user = req.user.id;
+        pool.query('UPDATE  cust SET image=$1 where id=$2',[sampleFile.name,user],(err,data,rows)=>{
+            //when done wiyt connection,release it
+            
+            if(!err){
+                res.render('profile',{title:'User List', data: data.rows});
+            }else{
+                console.log(err);
+            }
+        //console.log('The data from car_details',data)  
+        });
+
+
+
+
+        //res.send('File Uploaded!')
+    });
+
+
+    console.log(sampleFile);
+
 });
 
 //adding car
