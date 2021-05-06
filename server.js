@@ -119,7 +119,7 @@ app.get('/buycar', checkNotAuthenticated,(req, res) =>{
 });
 
 //profile
-app.get('/profile',checkNotAuthenticated,(req,res)=>{
+app.get('/profile',checkNotAuthenticated,async(req,res)=>{
     const user = req.user.id;
     pool.query(`SELECT * FROM cust where id=$1`,[user],(err,data,rows)=>{
         //when done wiyt connection,release it
@@ -134,7 +134,7 @@ app.get('/profile',checkNotAuthenticated,(req,res)=>{
 });
 
 
-app.post('/profile',checkNotAuthenticated,(req,res)=>{
+app.post('/profile',checkNotAuthenticated,async(req,res)=>{
     let sampleFile;
     let uploadPath;
 
@@ -154,7 +154,16 @@ app.post('/profile',checkNotAuthenticated,(req,res)=>{
             //when done wiyt connection,release it
             
             if(!err){
-                res.render('profile',{title:'User List', data: data.rows});
+                const user = req.user.id;
+    pool.query(`SELECT * FROM cust where id=$1`,[user],(err,data,rows)=>{
+        //when done wiyt connection,release it
+        
+        if (!err){
+            res.render('profile',{data: data.rows});
+        }else{
+            console.log(err.message)
+        }
+    });
             }else{
                 console.log(err);
             }
