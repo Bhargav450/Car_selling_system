@@ -68,6 +68,9 @@ app.get("/index",checkNotAuthenticated,(req,res)  => {
 
 
 
+
+
+
 //selling  car page
 
 app.get('/sell',checkNotAuthenticated,(req,res)=>{
@@ -117,6 +120,31 @@ app.get('/buycar', checkNotAuthenticated,(req, res) =>{
         }
   });
 });
+
+
+app.post('/buy',checkNotAuthenticated,(req,res)=>{
+    //car_details connection
+
+    let searchTerm = req.body.search;
+
+
+    pool.query(`SELECT
+    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date
+    FROM
+    cust
+    INNER JOIN car_details ON cust.id = car_details.id where car_name iLIKE $1`, ['%' + searchTerm + '%'] ,(err,data,rows)=>{
+      //when done wiyt connection,release it
+  
+      if(!err){
+          res.render('buycar',{title:'User List', data: data.rows});
+      }else{
+          console.log(err);
+      }
+  //console.log('The data from car_details',data);
+  });
+});
+
+
 
 //profile
 app.get('/profile',checkNotAuthenticated,async(req,res)=>{
@@ -180,6 +208,9 @@ app.post('/profile',checkNotAuthenticated,async(req,res)=>{
     console.log(sampleFile);
 
 });
+
+
+
 
 //adding car
 app.get('/addcar',checkNotAuthenticated,(req,res)=>{

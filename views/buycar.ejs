@@ -21,7 +21,7 @@
   <main class="container-fluid px-0 pt-4 mx-0">
     <!--NAVIGATION BAR: done using Bootstrap; fixed to top, dark for current page, -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0">
-      <a class="navbar-brand mr-5" href="index.ejs"><img src="image/logo.png"/></a>
+      <a class="navbar-brand mr-5" href="/index"><img src="image/logo.png"/></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span></button>
 
@@ -58,8 +58,8 @@
         <h3 class="header-buycar3 white">by <span><a href="http://mbmwheelpower.com.sg" target="_blank" style="color:white">MBM WheelPower!</a></span></h3>
         <!--Search Bar: allows user to key in the make/model of cars they looking for, budget, etc-->
         <div class="search-box b-l-gray white px-5 py-2">
-          <form style="font-size:10pt; color:rgb(127, 127, 127)">
-            <input id="search-bar" type="text" placeholder="Car Make / Model" />
+          <form style="font-size:10pt; color:rgb(127, 127, 127)" method="POST" action="/buy">
+            <input id="search-bar" type="search" placeholder="Search" name="search" aria-label="Search" />
             <!--To allow user to select their lowest budget-->
             <select name="price-min">
                             <option value="">Min Price</option>                    
@@ -132,7 +132,7 @@
                             <option value="">SUV</option>                    
                             <option value="">All</option>    
                         </select>
-            <a href="buycar-search.ejs"><input type="button" class="btn-warning" value="Find Used" /></a>
+                        <button class="btn-warning" type="submit">Search</button>
           </form>
         </div>
       </div>
