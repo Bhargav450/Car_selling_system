@@ -50,6 +50,14 @@ app.use(passport.session());
 
 app.use(flash());
 
+
+//navbar
+
+
+
+
+
+//index page
 app.get("/index",checkNotAuthenticated,(req,res)  => {
 
     const user = req.user.id;
@@ -109,7 +117,7 @@ app.post('/sell',checkNotAuthenticated,(req,res)=>{
 
 app.get('/buycar', checkNotAuthenticated,(req, res) =>{
     pool.query(`SELECT
-    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date
+    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date,addtitle
     FROM
     cust
     INNER JOIN car_details ON cust.id = car_details.id`,(err,data,rows) =>{
@@ -129,7 +137,7 @@ app.post('/buy',checkNotAuthenticated,(req,res)=>{
 
 
     pool.query(`SELECT
-    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date
+    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date,addtitle
     FROM
     cust
     INNER JOIN car_details ON cust.id = car_details.id where car_name iLIKE $1`, ['%' + searchTerm + '%'] ,(err,data,rows)=>{
@@ -245,7 +253,7 @@ app.post('/addcar',checkNotAuthenticated,(req,res)=>{
             if (error) throw error;
            // console.log(results);
             //console.log(comments);
-            res.render('add-car');
+            res.render('add-car', {data: rows, alert: `record has been Inserted.`});
   
         });
     });
@@ -268,6 +276,7 @@ app.get('/editcar/:id',checkNotAuthenticated,(req,res)=>{
 
 app.post('/editcar/:id',checkNotAuthenticated,(req,res)=>{
 
+    const user = req.user;
     const  fuel =req.body.r1;
     const transmission=req.body.r2;
     const now=req.body.r3;
@@ -283,7 +292,7 @@ app.post('/editcar/:id',checkNotAuthenticated,(req,res)=>{
   console.log(sampleFile);
 
     let {carname,year,addtitle,desc,cp,mn}=req.body;
-  console.log(req.body.carname);
+  //console.log(req.body.carname);
 
     pool.query('UPDATE car_details  SET car_name=$1,year=$2,fuel=$3,transmission=$4,no_of_owners=$5,addtitle=$6,description=$7,price=$8,mob_no=$9,img=$10 where  car_register_id = $11' , [carname,year,fuel,transmission,now,addtitle,desc,cp,mn,sampleFile.name,req.params.id] ,(err,rows)=>{
       //when done wiyt connection,release it

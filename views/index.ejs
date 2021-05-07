@@ -57,7 +57,7 @@
             <a class="nav-link" href='/buycar'>Buying</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contactus">Contact Us</a>
+            <a class="nav-link" href="contact-us.ejs">Contact Us</a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-1">
@@ -74,6 +74,11 @@
             <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="media align-items-center">
                 <span class="avatar avatar-sm rounded-circle">
+                  <% if(data) { %>
+                    <img alt="Image placeholder" src="/upload/<%=data[0].image %>" class="rounded-circle">
+                  <% } else { %>
+                      <img src="/upload/default.jpg" class="rounded-circle">
+                  <% } %>
                 </span>
                 <div class="media-body ml-2 d-none d-lg-block">
                   <a href="/profile"><span class="mb-0 text-sm  font-weight-bold"><%=data[0].name %></span></a>
@@ -85,6 +90,10 @@
         <a href="/users/logout">Logout</a>
       </div>
     </nav>
+
+
+
+    
 
     <!--LANDING PAGE: include a quotation request form-->
     <!--Display for sm & above-->
