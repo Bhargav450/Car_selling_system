@@ -2,15 +2,7 @@
 
 
 
-body
-{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    flex-direction: column;
-    background: #040d15;
-}
+
 
 a
 {
@@ -118,14 +110,7 @@ nav li a:hover{
     background-color: rgba(0, 0, 0, 0.1);
   }
 
-  body{
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
-	color: #333;
-	background-color: #eee;
-}
-
+ 
 h1, h2, h3, h4, h5, h6{
 	font-weight: 200;
 }
@@ -140,11 +125,11 @@ h1{
 
 /* CONTAINERS */
 
-.container {max-width: 850px; width: 100%; margin: 0 auto;}
+.container {max-width: 850px; width: 100%; margin: 0 auto; background-image: url('/image/plntxt.jpg');}
 .four { width: 32.26%; max-width: 32.26%;}
 
 
-/* COLUMNS */
+/* OLUMNS */
 
 .col {
   display: block;
@@ -174,6 +159,7 @@ h1{
 
 .form .plan input, .form .payment-plan input, .form .payment-type input{
 	display: none;
+  background-image: url('/image/plntxt.jpg');
 }
 
 .form label{
@@ -195,6 +181,7 @@ h1{
 .form .plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{
 	border: 3px solid #333;
 	background-color: #2fcc71;
+  background-image: url('/image/plntxt.jpg');
 }
 
 .form .plan input:checked + label:after, form .payment-plan input:checked + label:after, .form .payment-type input:checked + label:after{

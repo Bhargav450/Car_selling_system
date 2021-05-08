@@ -18,34 +18,7 @@
 </head>
 
 <body>
-  <main class="container-fluid px-0 pt-4 mx-0">
-    <!--NAVIGATION BAR: done using Bootstrap; fixed to top, dark for current page, -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light py-0">
-      <a class="navbar-brand mr-5" href="/index"><img src="image/logo.png"/></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span></button>
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item mr-lg-3 ">
-            <a class="nav-link" href="/index">Home <span class="sr-only .sr-only-focusable">(current)</span></a>
-          </li>
-          <li class="nav-item mr-lg-3">
-            <a class="nav-link" href="index.ejs#about-us">About Us</a>
-          </li>
-          <li class="nav-item mr-lg-3">
-            <a class="nav-link" href="/sell">Selling</a>
-          </li>
-          <li class="nav-item mr-lg-3 active">
-            <a class="nav-link" href="/buycar">Buying</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact-us.ejs">Contact Us</a>
-          </li>
-        </ul>
-
-      </div>
-    </nav>
+  <%- include('navbar.ejs')%>
     <!--BUYCAR Page main banner-->
     <div id="buycar">
       <!--Display for MD & above-->

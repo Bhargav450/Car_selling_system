@@ -1,3 +1,6 @@
+
+
+
 const express=require("express");
 const app=express();
 const {pool} = require("./dbConfig");
@@ -125,7 +128,7 @@ app.post('/sell',checkNotAuthenticated,(req,res)=>{
 
 app.get('/buycar', checkNotAuthenticated,(req, res) =>{
     pool.query(`SELECT
-    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date,addtitle,transmission
+    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date,addtitle,transmission,image
     FROM
     cust
     INNER JOIN car_details ON cust.id = car_details.id`,(err,data,rows) =>{
@@ -145,14 +148,16 @@ app.post('/buy',checkNotAuthenticated,(req,res)=>{
 
 
     pool.query(`SELECT
-    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date,addtitle,transmission
+    name,email,password,car_name,img,year,price,no_of_owners,description,fuel,mob_no,date,addtitle,transmission,image
     FROM
     cust
     INNER JOIN car_details ON cust.id = car_details.id where car_name iLIKE $1`, ['%' + searchTerm + '%'] ,(err,data,rows)=>{
       //when done wiyt connection,release it
   
-      if(!err){
-          res.render('buycar',{title:'User List', data: data.rows});
+            if(!err){
+                res.render('buycar',{title:'User List', data: data.rows});
+          
+
       }else{
           console.log(err);
       }
@@ -573,8 +578,3 @@ app.post("/users/sell", checkNotAuthenticated,(req, res) =>{
 app.listen(PORT,()=>{
     console.log(`server running on port ${PORT}`);
 });
-
-
-
-  
-
