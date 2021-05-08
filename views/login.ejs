@@ -14,12 +14,12 @@
 
     <ul>
         <% if(messages.success_msg) { %>
-            <li><%= messages.success_msg %></li>
+            <li style="color:green"><%= messages.success_msg %></li>
             <% } %>
     </ul>
     <ul>
         <% if (messages.error) { %>
-            <li><%= messages.error %></li>
+            <li style="color:red"><%= messages.error %></li>
             <% } %>
     </ul>
     <div class="container mt-4">

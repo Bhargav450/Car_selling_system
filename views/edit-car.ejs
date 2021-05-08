@@ -9,6 +9,13 @@
     </ol>
 </nav>
 
+<ul>
+    <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+        <li style="color:red"><%= error.message %></li>
+        <% }) %> <% } %>
+    
+  </ul>
+
 
 <form class="row g-3 needs-validation" method="POST" action="/editcar/<%=data.rows[0].car_register_id%>" enctype="multipart/form-data" novalidate>
 

@@ -7,6 +7,14 @@
 </nav>
 
 
+<ul>
+  <% if (typeof errors != 'undefined') { %> <% errors.forEach(error => { %>
+      <li style="color:red"><%= error.message %></li>
+      <% }) %> <% } %>
+        
+  
+</ul>
+
 
 
 

@@ -1,4 +1,7 @@
 <%- include('home.ejs') %>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,8 +33,14 @@
 <table class="table table-hover">
   <thead class="thead-blue">
     <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
+      <th scope="col">Car Name</th>
+      <th scope="col">Fuel Type</th>
+      <th scope="col">Transmission</th>
+      <th scope="col">City</th>
+      <th scope="col">Mobile no</th>
+      <th scope="col">Image</th>
+      
+      
       <th scope="col" class="text-end">Action</th>
     </tr>
   </thead>
@@ -39,7 +48,11 @@
     <% for(var i of data) { %>
     <tr>
       <td><%- i.car_name %></td>
+      <td><%- i.fuel %></td>
+      <td><%- i.transmission %></td>
+      <td><%- i.addtitle %></td>
       <td><%- i.mob_no %></td>
+      <td><img src="/upload/<%= i.img %>" align="left" class="container"></td>
       <td class="text-end">
         <a href="/viewcar/<%= i.car_register_id %>" type="button" class="btn btn-light btn-small"><i class="bi bi-eye"></i> View</a>
         <a href="/editcar/<%= i.car_register_id %>" name type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i>
