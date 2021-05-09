@@ -7,18 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
-    <center><h2><b>Car Selling System</b></h2></center>
+    <center><h2 style="color: whitesmoke;"><b>Car Selling System</b></h2></center>
     <title>Login</title>
 </head>
 
 <style>
-    body{
-      background-image: url('/image/plaintext.jpg');
+    body {
+      background-image: url("/image/plntxt.jpg");
     }
-    </style>
-
+  </style> 
 <body>
-    <h1>Login</h1>
+    <h1 style="color: whitesmoke;">Login</h1>
 
     <ul>
         <% if(messages.success_msg) { %>
@@ -30,20 +29,19 @@
             <li style="color:red"><%= messages.error %></li>
             <% } %>
     </ul>
+  
+    
     <div class="container mt-4">
-      
-        <div class="card">
             <div class="card-body">
-            </div>
-            <div class="card-body">
+                </div>
             <form action="/users/login" method="POST">
           
                 <div class="form-group">
-                    <label for="email">Email Address:</label>
+                    <label for="email" style="color: whitesmoke;">Email Address:</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter Your Email ID" name="email">
                 </div>
                  <div class="form-group">
-                    <label for="password">Password:</label>
+                    <label for="password" style="color: whitesmoke;">Password:</label>
                     <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                 </div>
 
@@ -51,9 +49,10 @@
                 <div>
                     <input type="submit" value="Login" />
                 </div>
-                <a href="/users/register">Register</a>
+                <a href="/users/register">Want to Register?</a>
             </form>
-            </div>
         </div>
+            
+     
 </body>
 </html>

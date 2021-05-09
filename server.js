@@ -141,6 +141,24 @@ app.get('/buycar', checkNotAuthenticated,(req, res) =>{
 });
 
 
+//about us 
+app.get("/abtus",checkNotAuthenticated,(req,res)=>{
+    const user = req.user.id;
+    pool.query('SELECT *FROM cust where id=$1',[user],(err,data,rows)=>{
+        //when done wiyt connection,release it
+        
+        if(!err){
+            res.render('abtus',{title:'User List', data: data.rows});
+        }else{
+            console.log(err);
+        }
+    //console.log('The data from car_details',data)  
+    });
+
+});
+
+
+
 app.post('/buy',checkNotAuthenticated,(req,res)=>{
     //car_details connection
 
@@ -164,6 +182,7 @@ app.post('/buy',checkNotAuthenticated,(req,res)=>{
   //console.log('The data from car_details',data);
   });
 });
+
 
 
 
@@ -568,8 +587,6 @@ app.post("/users/sell", checkNotAuthenticated,(req, res) =>{
   // res.redirect("/bcar");
     });*/
 
-
-//buying car
 
 
 

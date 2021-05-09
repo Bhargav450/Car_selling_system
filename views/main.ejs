@@ -48,22 +48,33 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item mr-lg-3 active">
-            <a class="nav-link" href="/index">Home <span class="sr-only .sr-only-focusable">(current)</span></a>
-          </li>
-          <li class="nav-item mr-lg-3">
-            <a class="nav-link" href="index.ejs#about-us">About Us</a>
+            <a class="nav-link" href="/index">Home</span></a>
           </li>
           <li class="nav-item mr-lg-3">
               
-            <a class="nav-link" href='/sell'>Selling</a>
+            <a class="nav-link" href='/sell'>Sell</a>
           </li>
           <li class="nav-item mr-lg-3">
-            <a class="nav-link" href='/buycar'>Buying</a>
+            <a class="nav-link" href='/buycar'>Buy</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact-us.ejs">Contact Us</a>
+            <a class="nav-link" href="/abtus">About Us</a>
           </li>
         </ul>
+
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+          <li class="nav-item dropdown">
+            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="media align-items-center">
+
+
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <center><a href="/users/logout">Logout</a></center>
+      </div>
         
         <ul class="navbar-nav align-items-center d-none d-md-flex">
           <li class="nav-item dropdown">
@@ -83,15 +94,13 @@
 
     
 
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  User has been removed.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+
 
 
 <div class="row">
   <div class="col-6">
-    <h4>Cars you have posted so far</h4>
+    
+    <h4 style="color:blue">My Car AD</h4>
   </div>
   <div class="col-6 d-flex justify-content-end">
     <a href="/addcar" type="button" class="btn btn-primary align-self-center">+Add car</a>
